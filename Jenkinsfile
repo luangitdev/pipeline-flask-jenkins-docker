@@ -21,10 +21,10 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 script {
-                    // docker-hub-creds é a credencial de acesso do docker hub dentro do Jenkins
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
-                        echo "Logado no Docker Hub!"
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
+                        sh "echo \$DOCKER_HUB_PASS | docker login -u \$DOCKER_HUB_USER --password-stdin"
                     }
+                    echo "Logado no Docker Hub!"
                 }
             }
         }
@@ -32,9 +32,6 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'docker-hub-creds', variable: 'DOCKER_HUB_TOKEN')]) {
-                        sh "echo \$DOCKER_HUB_TOKEN | docker login -u luandocs --password-stdin"
-                    }
                     def appImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
                     appImage.push()
                     appImage.push('latest') // Atualiza a versão mais recente
