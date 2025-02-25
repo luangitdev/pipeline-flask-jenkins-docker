@@ -8,7 +8,7 @@ pipeline {
 
     // Gatilhos para executar o pipeline.
     triggers {
-        pollSCM('H/1 * * * *') // Verifica o repositório a cada 1 minuto.
+        pollSCM('* * * * *') // Verifica o repositório a cada 1 minuto.
     }
 
     stages {
