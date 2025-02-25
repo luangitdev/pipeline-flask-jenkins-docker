@@ -38,4 +38,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo "Pipeline executado com sucesso!"
+        }
+        failure {
+            echo "Ocorreu um erro no pipeline."
+        }
+    }
 }
