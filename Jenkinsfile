@@ -32,6 +32,9 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
+                    withCredentials([string(credentialsId: 'docker-hub-creds', variable: 'DOCKER_HUB_TOKEN')]) {
+                        sh "echo \$DOCKER_HUB_TOKEN | docker login -u luandocs --password-stdin"
+                    }
                     def appImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
                     appImage.push()
                     appImage.push('latest') // Atualiza a versão mais recente
