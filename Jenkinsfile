@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-creds') // Referência às credenciais globais
-        IMAGE_NAME = "luandocs/myapp:jenkins" // Substitua pelo seu nome de usuário e nome da imagem
+        IMAGE_NAME = "luandocs/myapp-jenkins" // Substitua pelo seu nome de usuário e nome da imagem
     }
 
     // Gatilhos para executar o pipeline.
@@ -34,6 +34,7 @@ pipeline {
                 script {
                     def appImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
                     appImage.push()
+                    appImage.push('latest') // Atualiza a versão mais recente
                 }
             }
         }
