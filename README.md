@@ -52,7 +52,7 @@ Antes de começar, certifique-se de que os seguintes requisitos estão atendidos
 ### **Instalação do Jenkins**
 
 1. Instale o Jenkins seguindo a [documentação oficial](https://www.jenkins.io/doc/book/installing/).
-2. Após a instalação, acesse o Jenkins em `http://localhost:8080` e conclua a configuração inicial.
+2. Após a instalação, acesse o Jenkins em `http://localhost:8080` e conclua a configuração inicial..
 
 ### **Instalação do Docker**
 
