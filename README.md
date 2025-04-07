@@ -1,7 +1,3 @@
-Entendido! Vou complementar a documentação adicionando as seções **Contribuição**, **Licença** e **Contato** para deixá-la mais completa e alinhada com as melhores práticas de projetos open source. Aqui está a versão atualizada:
-
----
-
 # **CI/CD com Jenkins: Automatizando Builds e Pushes para Docker Hub**
 
 Este projeto demonstra como configurar um pipeline Jenkins para automatizar a construção de imagens Docker e o envio (push) para o Docker Hub. O pipeline utiliza um `Jenkinsfile` declarativo para definir as etapas do processo de CI/CD.
